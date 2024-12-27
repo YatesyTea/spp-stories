@@ -21,7 +21,7 @@ const clearSelectedImage = () => currentlySelectedImage.value = undefined;
 	<header class="center">
 		<h1 class="mb-n-1">The Best Son, Husband, Father, and Friend</h1>
 		<h2>Satya Prakash Pachisia</h2>
-		<img class="br-20" src="/satya-rad.jpeg" alt="Rad Dad" width="300">
+		<img class="br-20" src="/satya-rad.jpeg" alt="Rad Dad" width="300" height="300" style="object-fit: cover;">
 		<p class="mw-450px text-g-400 text-left">
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, fuga! Corporis, laudantium suscipit laborum
 			voluptatum obcaecati animi rerum consectetur tempore voluptates dolorum culpa nihil placeat officia soluta
@@ -106,7 +106,7 @@ const clearSelectedImage = () => currentlySelectedImage.value = undefined;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 2;
-	background-color: white;
+	background-color: antiquewhite;
 	border-radius: 20px;
 	min-width: 33vw;
 	max-width: 500px;
