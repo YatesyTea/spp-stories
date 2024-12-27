@@ -114,16 +114,18 @@ const clearSelectedImage = () => currentlySelectedImage.value = null;
 	z-index: 2;
 	background-color: white;
 	border-radius: 20px;
+	min-width: 33vw;
+	max-width: 500px;
+	max-height: 80vh;
+	overflow-y: scroll;
 }
 
 .card-body {
 	display: grid;
-	border-radius: 20px;
-	min-width: 33vw;
 }
 
 .card-text {
-	padding: 3em;
+	padding: 0 3em 1em;
 }
 
 .card-image {
@@ -136,11 +138,17 @@ const clearSelectedImage = () => currentlySelectedImage.value = null;
 
 .dismiss-button {
 	float: right;
-	background: none;
+	background: beige;
 	border: none;
+	border-radius: 10px;
 	font-size: 1.5em;
-	margin-top: 1em;
-	margin-right: 1em;
+	margin-top: 0.25em;
+	margin-right: 0.25em;
 	color: gray;
+	opacity: 0.7;
+}
+
+.dismiss-button:hover {
+	transform: scale(1.02);
 }
 </style>
