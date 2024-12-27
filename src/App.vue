@@ -9,12 +9,12 @@ const imageWithStoryList: ImageWithStory[] = [
 	{ src: "satya-stuti-sofa-gnome.jpeg", title: "Sofa Gnome", body: "For the lazy days innit" },
 ];
 
-const currentlySelectedImage = ref<ImageWithStory | null>(imageWithStoryList[0]);
+const currentlySelectedImage = ref<ImageWithStory | undefined>();
 
 // Only select an image if no image is currently selected
 const selectImage = (image: ImageWithStory) => !currentlySelectedImage.value && (currentlySelectedImage.value = image);
 
-const clearSelectedImage = () => currentlySelectedImage.value = null;
+const clearSelectedImage = () => currentlySelectedImage.value = undefined;
 </script>
 
 <template>
@@ -33,17 +33,19 @@ const clearSelectedImage = () => currentlySelectedImage.value = null;
 			<img class="br-20 hov-scale" :src="item.src" style="height: 350px; object-fit: cover;" :alt="item.title"
 				@click="() => selectImage(item)" />
 		</div>
-		<div v-if="currentlySelectedImage" class="card-display">
-			<button @click="() => clearSelectedImage()" class="dismiss-button"
-				style="position: absolute; top: 5px; right: 5px;">✖</button>
-			<div class="card-body">
-				<img :src="currentlySelectedImage.src" :alt="currentlySelectedImage.title" class="card-image" />
-				<div class="card-text">
-					<h2>{{ currentlySelectedImage.title }}</h2>
-					<p>{{ currentlySelectedImage.body }}</p>
+		<transition name="fade">
+			<div v-if="currentlySelectedImage" class="card-display">
+				<button @click="() => clearSelectedImage()" class="dismiss-button"
+					style="position: absolute; top: 5px; right: 5px;">✖</button>
+				<div class="card-body">
+					<img :src="currentlySelectedImage.src" :alt="currentlySelectedImage.title" class="card-image" />
+					<div class="card-text">
+						<h2>{{ currentlySelectedImage.title }}</h2>
+						<p>{{ currentlySelectedImage.body }}</p>
+					</div>
 				</div>
 			</div>
-		</div>
+		</transition>
 	</main>
 </template>
 
@@ -67,12 +69,8 @@ const clearSelectedImage = () => currentlySelectedImage.value = null;
 	border-radius: 20px;
 }
 
-.br-6 {
-	border-radius: 6px;
-}
-
-.mb-1 {
-	margin-bottom: 1em;
+.mb-n-1 {
+	margin-bottom: -0.5em;
 }
 
 .mt-1 {
@@ -89,10 +87,6 @@ const clearSelectedImage = () => currentlySelectedImage.value = null;
 
 .text-g-400 {
 	color: gray;
-}
-
-.mb-n-1 {
-	margin-bottom: -0.5em;
 }
 
 .text-left {
@@ -150,5 +144,15 @@ const clearSelectedImage = () => currentlySelectedImage.value = null;
 
 .dismiss-button:hover {
 	transform: scale(1.02);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.6s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
 }
 </style>
