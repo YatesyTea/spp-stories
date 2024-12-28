@@ -86,7 +86,7 @@ const clearSelectedImage = () => currentlySelectedImage.value = undefined;
 }
 
 .text-g-400 {
-	color: gray;
+	color: #333;
 }
 
 .text-left {
